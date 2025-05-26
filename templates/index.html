@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Attrition Predictor</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f9;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 500;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      background-color: #2c3e50;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 25px;
+    }
+    input[type="submit"]:hover {
+      background-color: #1a252f;
+    }
+    .result {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #27ae60;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Employee Attrition Prediction</h2>
+    <form action="/predict" method="post">
+      <label>Age</label>
+      <input type="number" name="Age" required>
+
+      <label>Gender</label>
+      <select name="Gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+
+      <label>Marital Status</label>
+      <select name="MaritalStatus">
+        <option value="Single">Single</option>
+        <option value="Married">Married</option>
+        <option value="Divorced">Divorced</option>
+      </select>
+
+      <label>OverTime</label>
+      <select name="OverTime">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <label>Business Travel</label>
+      <select name="BusinessTravel">
+        <option value="Non-Travel">Non-Travel</option>
+        <option value="Travel_Rarely">Travel_Rarely</option>
+        <option value="Travel_Frequently">Travel_Frequently</option>
+      </select>
+
+      <label>Job Role</label>
+      <select name="JobRole">
+        <option value="Sales Executive">Sales Executive</option>
+        <option value="Research Scientist">Research Scientist</option>
+        <option value="Laboratory Technician">Laboratory Technician</option>
+        <option value="Manufacturing Director">Manufacturing Director</option>
+        <option value="Healthcare Representative">Healthcare Representative</option>
+        <option value="Manager">Manager</option>
+        <option value="Sales Representative">Sales Representative</option>
+        <option value="Human Resources">Human Resources</option>
+        <option value="Research Director">Research Director</option>
+      </select>
+
+      <label>Monthly Income</label>
+      <input type="number" name="MonthlyIncome" required>
+
+      <label>Job Satisfaction (1-4)</label>
+      <input type="number" name="JobSatisfaction" min="1" max="4" required>
+
+      <label>Years at Company</label>
+      <input type="number" name="YearsAtCompany" required>
+
+      <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction_text %}
+    <div class="result">{{ prediction_text }}</div>
+    {% endif %}
+  </div>
+</body>
+</html>
